@@ -88,5 +88,5 @@ Released under the GPL-2.0-or-later
 
 💡 About
 
-Built with ❤️ by Alox & Co
+Built with ❤️ by [**Alox & Co**](https://alox.co)  
  to keep WordPress workflows simple.
