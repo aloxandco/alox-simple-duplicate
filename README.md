@@ -1,4 +1,4 @@
-# Alox Simply Duplicate
+# Alox Simple Duplicate
 
 [![License: GPL v2 or later](https://img.shields.io/badge/License-GPL%20v2%20or%20later-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)](https://wordpress.org/)
@@ -41,7 +41,7 @@ Includes a .pot file and full internationalization support (alox-simply-duplicat
 
 Download the ZIP file from our Codex.
 In your WordPress dashboard, go to Plugins → Add New → Upload Plugin.
-Upload alox-simply-duplicate.zip.
+Upload alox-simple-duplicate.zip.
 Activate it.
 You’re ready to go!
 Alternatively, place the folder manually into /wp-content/plugins/ and activate via the dashboard.
