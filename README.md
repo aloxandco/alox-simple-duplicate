@@ -17,62 +17,61 @@ For full details, usage guides, and developer examples, visit the
 
 ## ✨ Features
 
-- One-click **Duplicate** link in post/page actions  
-- Works with any **public custom post type**  
-- Copies:
-  - Post content & excerpt
-  - Taxonomies (categories, tags, custom taxonomies)
-  - Featured image
-  - Post meta (safe-copied, excludes `_edit_lock` etc.)
-- Bulk **Duplicate** action available
-- Excludes WooCommerce products by default (to avoid conflicts)
-- Lightweight and extendable via filters
+✅ One-Click Duplication
+Add a “Duplicate” link under each post or page in your WordPress dashboard.
+
+✅ Bulk Duplicate
+Select multiple posts or pages and duplicate them all at once using the bulk actions dropdown.
+
+✅ Preserves Key Content
+Copies taxonomies, featured images, and custom meta fields safely.
+
+✅ Respects Permissions
+Only users with proper capabilities (like Editors or Admins) can duplicate posts.
+
+✅ Lightweight & Secure
+No extra tables or settings. No external API calls. Follows WordPress security and coding standards.
+
+✅ Translation Ready
+Includes a .pot file and full internationalization support (alox-simply-duplicate text domain).
 
 ---
 
 ## 🚀 Installation
 
-1. Download or clone this repository into your `/wp-content/plugins/` directory:
-   ```bash
-   git clone https://github.com/yourusername/alox-simply-duplicate.git
-
-
-Activate Alox Simply Duplicate in the WordPress admin under Plugins.
-
-Hover over a post, page, or supported custom post type → click Duplicate.
+Download the ZIP file from our Codex.
+In your WordPress dashboard, go to Plugins → Add New → Upload Plugin.
+Upload alox-simply-duplicate.zip.
+Activate it.
+You’re ready to go!
+Alternatively, place the folder manually into /wp-content/plugins/ and activate via the dashboard.
 
 🔧 Filters & Hooks
 
-Developers can extend functionality:
-
-Exclude/Include Post Types
+Alox Simply Duplicate is filterable and extensible. You can modify or extend behavior using built-in hooks:
 ```php
-add_filter( 'alox_sd_excluded_post_types', function( $types ) {
-    // Re-enable WooCommerce products
-    return array_diff( $types, array( 'product' ) );
-} );
+/**
+ * Filter excluded post types.
+ */
+add_filter( 'alox_sd_excluded_post_types', function( $excluded ) {
+    $excluded[] = 'my_custom_type';
+    return $excluded;
+});
+
+/**
+ * Filter duplicated post arguments.
+ */
+add_filter( 'alox_sd_new_post_args', function( $args, $original ) {
+    $args['post_status'] = 'pending';
+    return $args;
+}, 10, 2 );
 ```
+Other available hooks:
 
-Skip Meta Keys
-```php
-add_filter( 'alox_sd_skip_meta_keys', function( $keys ) {
-    $keys[] = '_my_unique_meta';
-    return $keys;
-} );
-```
-
-After Duplicate Action
-```php
-add_action( 'alox_sd_after_duplicate', function( $new_id, $original ) {
-    // Custom logic after a post is duplicated
-} , 10, 2 );
-```
-
-📸 Screenshots
-
-Duplicate link in row actions
-
-Bulk duplicate option in list view
+alox_sd_skip_meta_keys
+alox_sd_skip_private_meta
+alox_sd_after_duplicate
+Perfect for developers who want to control which metadata or post types are duplicated.
 
 📦 Requirements
 
@@ -83,8 +82,6 @@ PHP 7.4+
 📜 License
 
 Released under the GPL-2.0-or-later
-.
-© Alox & Co
 
 💡 About
 
