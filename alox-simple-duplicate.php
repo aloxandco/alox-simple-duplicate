@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Alox Simply Duplicate
+ * Plugin Name: Alox Simple Duplicate
  * Plugin URI:  https://codex.alox.co/
  * Description: Duplicate posts, pages, and public custom post types into a new draft with taxonomies, meta, and featured image.
  * Version:     1.2.0
@@ -8,7 +8,7 @@
  * Author URI:  https://alox.co
  * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: alox-simply-duplicate
+ * Text Domain: alox-simple-duplicate
  * Domain Path: /languages
  */
 
@@ -22,7 +22,7 @@ define( 'ALOX_SD_VER', '1.2.0' );
  * Load textdomain.
  */
 add_action( 'plugins_loaded', function () {
-    load_plugin_textdomain( 'alox-simply-duplicate', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+    load_plugin_textdomain( 'alox-simple-duplicate', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 } );
 
 /**
@@ -80,22 +80,22 @@ function alox_sd_duplicate_post( int $original_id ) {
     $original = get_post( $original_id );
 
     if ( ! $original instanceof WP_Post ) {
-        return new WP_Error( 'alox_sd_not_found', __( 'Original item not found.', 'alox-simply-duplicate' ) );
+        return new WP_Error( 'alox_sd_not_found', __( 'Original item not found.', 'alox-simple-duplicate' ) );
     }
 
     $excluded = alox_sd_get_excluded_post_types();
     if ( in_array( $original->post_type, $excluded, true ) ) {
-        return new WP_Error( 'alox_sd_excluded', __( 'Duplication is disabled for this post type.', 'alox-simply-duplicate' ) );
+        return new WP_Error( 'alox_sd_excluded', __( 'Duplication is disabled for this post type.', 'alox-simple-duplicate' ) );
     }
 
     $pto = get_post_type_object( $original->post_type );
     if ( ! $pto ) {
-        return new WP_Error( 'alox_sd_invalid_pto', __( 'Invalid post type.', 'alox-simply-duplicate' ) );
+        return new WP_Error( 'alox_sd_invalid_pto', __( 'Invalid post type.', 'alox-simple-duplicate' ) );
     }
 
     // Permissions: must be able to edit original and create new items for that post type.
     if ( ! current_user_can( 'edit_post', $original->ID ) || ! current_user_can( $pto->cap->create_posts ) ) {
-        return new WP_Error( 'alox_sd_forbidden', __( 'You do not have permission to duplicate this item.', 'alox-simply-duplicate' ) );
+        return new WP_Error( 'alox_sd_forbidden', __( 'You do not have permission to duplicate this item.', 'alox-simple-duplicate' ) );
     }
 
     // Prepare new post arguments. Let core set dates/slugs.
@@ -105,7 +105,7 @@ function alox_sd_duplicate_post( int $original_id ) {
         'post_excerpt'   => $original->post_excerpt,
         'post_status'    => 'draft',
         /* translators: %s: original title */
-        'post_title'     => sprintf( __( '%s (Copy)', 'alox-simply-duplicate' ), $original->post_title ),
+        'post_title'     => sprintf( __( '%s (Copy)', 'alox-simple-duplicate' ), $original->post_title ),
         'post_type'      => $original->post_type,
         'comment_status' => $original->comment_status,
         'ping_status'    => $original->ping_status,
@@ -224,8 +224,8 @@ function alox_sd_row_action_link( $actions, $post ) {
         $actions['alox_sd_duplicate'] = sprintf(
             '<a href="%1$s" title="%2$s" aria-label="%2$s">%3$s</a>',
             esc_url( $url ),
-            esc_attr__( 'Duplicate this item', 'alox-simply-duplicate' ),
-            esc_html__( 'Duplicate', 'alox-simply-duplicate' )
+            esc_attr__( 'Duplicate this item', 'alox-simple-duplicate' ),
+            esc_html__( 'Duplicate', 'alox-simple-duplicate' )
         );
     }
 
@@ -250,11 +250,11 @@ function alox_sd_handle_duplicate() {
     $posttype = isset( $_GET['posttype'] ) ? sanitize_key( (string) $_GET['posttype'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
     if ( ! $post_id || ! $posttype ) {
-        wp_die( esc_html__( 'Invalid request.', 'alox-simply-duplicate' ) );
+        wp_die( esc_html__( 'Invalid request.', 'alox-simple-duplicate' ) );
     }
 
     if ( ! isset( $_GET['alox_sd_nonce'] ) || ! wp_verify_nonce( $_GET['alox_sd_nonce'], 'alox_sd_duplicate_' . $post_id ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        wp_die( esc_html__( 'Security check failed.', 'alox-simply-duplicate' ) );
+        wp_die( esc_html__( 'Security check failed.', 'alox-simple-duplicate' ) );
     }
 
     $result = alox_sd_duplicate_post( $post_id );
@@ -288,7 +288,7 @@ add_action( 'admin_init', 'alox_sd_handle_duplicate' );
  * @return array
  */
 function alox_sd_register_bulk_action( $bulk_actions ) {
-    $bulk_actions['alox_sd_bulk_duplicate'] = __( 'Duplicate', 'alox-simply-duplicate' );
+    $bulk_actions['alox_sd_bulk_duplicate'] = __( 'Duplicate', 'alox-simple-duplicate' );
     return $bulk_actions;
 }
 
@@ -335,7 +335,7 @@ function alox_sd_bulk_notices() {
         if ( $count > 0 ) {
             printf(
                 '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
-                esc_html( sprintf( _n( 'Duplicated %d item.', 'Duplicated %d items.', $count, 'alox-simply-duplicate' ), $count ) )
+                esc_html( sprintf( _n( 'Duplicated %d item.', 'Duplicated %d items.', $count, 'alox-simple-duplicate' ), $count ) )
             );
         }
     }

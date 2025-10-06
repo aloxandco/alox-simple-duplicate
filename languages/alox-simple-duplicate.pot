@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Alox Simply Duplicate 1.2.0\n"
+"Project-Id-Version: Alox Simple Duplicate 1.2.0\n"
 "Report-Msgid-Bugs-To: https://codex.alox.co\n"
 "POT-Creation-Date: 2025-10-05 12:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -11,68 +11,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Alox POT Generator\n"
-"X-Domain: alox-simply-duplicate\n"
+"X-Domain: alox-simple-duplicate\n"
 
-#: alox-simply-duplicate.php:91
+#: alox-simple-duplicate.php:91
 msgid "Duplication is disabled for this post type."
 msgstr ""
 
-#: alox-simply-duplicate.php:96
+#: alox-simple-duplicate.php:96
 msgid "Invalid post type."
 msgstr ""
 
-#: alox-simply-duplicate.php:101
+#: alox-simple-duplicate.php:101
 msgid "You do not have permission to duplicate this item."
 msgstr ""
 
-#: alox-simply-duplicate.php:86
+#: alox-simple-duplicate.php:86
 msgid "Original item not found."
 msgstr ""
 
-#: alox-simply-duplicate.php:115
+#: alox-simple-duplicate.php:115
 #, php-format
 msgid "%s (Copy)"
 msgstr ""
 
-#: alox-simply-duplicate.php:187
+#: alox-simple-duplicate.php:187
 msgid "Duplicate this item"
 msgstr ""
 
-#: alox-simply-duplicate.php:188
+#: alox-simple-duplicate.php:188
 msgid "Duplicate"
 msgstr ""
 
-#: alox-simply-duplicate.php:210
+#: alox-simple-duplicate.php:210
 msgid "Invalid request."
 msgstr ""
 
-#: alox-simply-duplicate.php:214
+#: alox-simple-duplicate.php:214
 msgid "Security check failed."
 msgstr ""
 
-#: alox-simply-duplicate.php:295
+#: alox-simple-duplicate.php:295
 msgid "Duplicate"
 msgstr ""
 
-#: alox-simply-duplicate.php:329
+#: alox-simple-duplicate.php:329
 #, php-format
 msgid "Duplicated %d item."
 msgid_plural "Duplicated %d items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: alox-simply-duplicate.php:374
+#: alox-simple-duplicate.php:374
 msgid "Duplication is disabled for this post type."
 msgstr ""
 
-#: alox-simply-duplicate.php:392
+#: alox-simple-duplicate.php:392
 msgid "You cannot create items for this post type."
 msgstr ""
 
-#: alox-simply-duplicate.php:400
+#: alox-simple-duplicate.php:400
 msgid "You do not have permission to duplicate this item."
 msgstr ""
 
-#: alox-simply-duplicate.php:413
+#: alox-simple-duplicate.php:413
 msgid "Security check failed."
 msgstr ""
